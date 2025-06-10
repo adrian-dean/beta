@@ -7,25 +7,26 @@ import CustomCursor from '@/components/CustomCursor';
 import ParticlesBackground from '@/components/ParticlesBackground';
 import BackToTopButton from '@/components/BackToTopButton';
 import NextNProgress from 'nextjs-progressbar';
-import { ThemeProvider } from 'next-themes';
+// import { ThemeProvider } from 'next-themes'; // REMOVE this line
 import { ToastProvider } from '@/components/Toast';
 import SearchModal from '@/components/SearchModal';
 import { useState } from 'react';
+import { Providers } from './providers'; // ADD this line
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Your Name - Portfolio',
   description: 'My personal portfolio showcasing my projects, skills, and technical documentation.',
-  metadataBase: new URL('[https://yourdomain.com](https://yourdomain.com)'), // Replace with your actual domain
+  metadataBase: new URL('https://yourdomain.com'), // Replace with your actual domain
   openGraph: {
     title: 'Your Name - Portfolio',
     description: 'My personal portfolio showcasing my projects, skills, and technical documentation.',
-    url: '[https://yourdomain.com](https://yourdomain.com)',
+    url: 'https://yourdomain.com',
     siteName: 'Your Name - Portfolio',
     images: [
       {
-        url: '[https://yourdomain.com/opengraph-image.jpg](https://yourdomain.com/opengraph-image.jpg)', // Replace with your actual opengraph image
+        url: 'https://yourdomain.com/opengraph-image.jpg', // Replace with your actual opengraph image
         width: 1200,
         height: 630,
         alt: 'Your Name Portfolio',
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     title: 'Your Name - Portfolio',
     description: 'My personal portfolio showcasing my projects, skills, and technical documentation.',
     creator: '@yourtwitterhandle', // Replace with your Twitter handle
-    images: ['[https://yourdomain.com/twitter-image.jpg](https://yourdomain.com/twitter-image.jpg)'], // Replace with your actual twitter image
+    images: ['https://yourdomain.com/twitter-image.jpg'], // Replace with your actual twitter image
   },
   keywords: ['portfolio', 'developer', 'web development', 'react', 'nextjs', 'tailwind css', 'javascript', 'software engineer'],
   authors: [{ name: 'Your Name' }],
@@ -56,7 +57,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} bg-background text-text dark:bg-background-dark dark:text-text-dark transition-colors duration-300`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        {/* Wrap the entire content of the body with the Providers component */}
+        <Providers>
           <ToastProvider>
             <NextNProgress color="#6366F1" startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} />
             <CustomCursor />
@@ -69,7 +71,7 @@ export default function RootLayout({
             <Footer />
             <BackToTopButton />
           </ToastProvider>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
