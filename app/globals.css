@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.background.DEFAULT');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.primary');
+  border-radius: 4px;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: theme('colors.background.dark');
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: theme('colors.secondary');
+}
+
+/* Custom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999; /* Ensure it's on top */
+  transform: translate(-50%, -50%); /* Center the cursor */
+  transition: all 0.1s ease-out; /* Smooth follow */
+}
+
+/* Hide default cursor */
+html {
+  cursor: none;
+}
+
+/* Ensure code blocks in markdown are styled by Tailwind Typography */
+/* These styles will be applied by @tailwindcss/typography plugin */
+/* You might need to add these classes in your tailwind.config.ts if you want them customizable */
+/* .prose pre {
+  @apply bg-gray-800 text-white p-4 rounded-md overflow-x-auto;
+}
+
+.prose code {
+  @apply text-yellow-300 bg-gray-700 px-1 py-0.5 rounded-sm;
+}
+
+.dark .prose pre {
+  @apply bg-gray-900 text-gray-100;
+}
+
+.dark .prose code {
+  @apply text-blue-300 bg-gray-800;
+} */
